@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>css tooltip</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Raleway");
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  width: 100%;
+			  height: 100vh;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  margin: 0;
+			  font-family: 'Raleway';
+			}
+
+			p {
+			  font-size: 40px;
+			}
+
+			.tooltip {
+			  border-bottom: 1px dotted red;
+			  position: relative;
+			}
+
+			.tooltip::before, .tooltip::after {
+			  position: absolute;
+			  left: 50%;
+			  display: none;
+			}
+
+			.tooltip::before {
+			  content: '';
+			  border-left: 10px solid transparent;
+			  border-right: 10px solid transparent;
+			  border-top: 10px solid #ff5722;
+			  top: -10px;
+			}
+
+			.tooltip::after {
+			  content: attr(data-tooltip);
+			  width: 200px;
+			  height: 30px;
+			  line-height: 30px;
+			  background-color: #ff5722;
+			  top: -50px;
+			  font-size: 18px;
+			  color: #fff;
+			  transform: translateX(-45%);
+			  padding: 5px;
+			  text-align: left;
+			  border-radius: 5px;
+			}
+
+			.tooltip:hover::before, .tooltip:hover::after {
+			  display: block;
+			}
+
+			.tooltip:hover {
+			  cursor: help;
+			}
+		</style>
+	</head>
+	<body>
+		<p>this is an awesome <span class="tooltip" data-tooltip="It's so cool!">tooltip</span></p>		
+	</body>
+</html>
